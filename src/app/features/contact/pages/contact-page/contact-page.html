@@ -1,0 +1,212 @@
+<main class="contact-page">
+  <section class="contact-hero" aria-labelledby="contact-title">
+    <div class="contact-hero__background" aria-hidden="true"></div>
+    <div class="contact-hero__content">
+      <p class="contact-section__eyebrow">{{ hero.eyebrow }}</p>
+      <h1 id="contact-title" class="contact-hero__title">{{ hero.title }}</h1>
+      <p class="contact-hero__subtitle">{{ hero.subtitle }}</p>
+    </div>
+  </section>
+
+  <section class="contact-section contact-methods" aria-label="Contact methods">
+    @for (method of contactMethods; track method.title) {
+      <article class="contact-method">
+        <div class="contact-method__icon"><i [class]="method.icon" aria-hidden="true"></i></div>
+        <div class="contact-method__content">
+          <span>{{ method.title }}</span>
+          <a
+            [href]="method.href"
+            [attr.target]="method.href.startsWith('http') ? '_blank' : null"
+            [attr.rel]="method.href.startsWith('http') ? 'noopener noreferrer' : null"
+          >
+            {{ method.value }}
+          </a>
+          <p>{{ method.description }}</p>
+        </div>
+      </article>
+    }
+  </section>
+
+  <section class="contact-section contact-main" aria-labelledby="inquiry-title">
+    <div class="contact-form-panel">
+      <div class="contact-form-panel__header">
+        <p class="contact-section__eyebrow">Project enquiry</p>
+        <h2 id="inquiry-title">Tell us about your project.</h2>
+        <p>
+          Complete the form with as much information as possible. We will review your request and
+          contact you about the next steps.
+        </p>
+      </div>
+
+      <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="submit()" novalidate>
+        <div class="contact-form__grid">
+          <app-input
+            inputId="contact-names"
+            label="Full name"
+            placeholder="Enter your full name"
+            formControlName="names"
+            [required]="true"
+            autocomplete="name"
+            prefixIcon="fa-regular fa-user"
+            [errorMessages]="{
+              required: 'Your full name is required.',
+              minlength: 'Your name must contain at least 2 characters.',
+              maxlength: 'Your name cannot exceed 120 characters.',
+            }"
+          />
+
+          <app-input
+            inputId="contact-email"
+            label="Email address"
+            placeholder="you@example.com"
+            type="email"
+            formControlName="email"
+            [required]="true"
+            autocomplete="email"
+            prefixIcon="fa-regular fa-envelope"
+            [errorMessages]="{
+              required: 'Your email address is required.',
+              email: 'Enter a valid email address.',
+              maxlength: 'Your email address is too long.',
+            }"
+          />
+
+          <app-input
+            inputId="contact-phone"
+            label="Phone number"
+            placeholder="+250 ..."
+            type="tel"
+            formControlName="phone"
+            autocomplete="tel"
+            prefixIcon="fa-solid fa-phone"
+            [errorMessages]="{ maxlength: 'Your phone number is too long.' }"
+          />
+
+          <app-input
+            inputId="contact-company"
+            label="Company or organization"
+            placeholder="Enter company name"
+            formControlName="company"
+            autocomplete="organization"
+            prefixIcon="fa-regular fa-building"
+            [errorMessages]="{ maxlength: 'Your company name is too long.' }"
+          />
+        </div>
+
+        <div class="contact-form__grid">
+          <app-input
+            inputId="contact-service"
+            type="select"
+            label="Service required"
+            placeholder="Select a service"
+            formControlName="service"
+            [required]="true"
+            [options]="serviceOptions"
+            [errorMessages]="{ required: 'Please select the service you need.' }"
+          />
+
+          <app-input
+            inputId="contact-budget"
+            type="select"
+            label="Estimated budget"
+            placeholder="Select a budget range"
+            formControlName="budget"
+            [options]="budgetOptions"
+          />
+        </div>
+
+        <app-input
+          inputId="contact-project-details"
+          type="textarea"
+          label="Project details"
+          placeholder="Describe your project, goals, required features, current challenges, and preferred timeline..."
+          formControlName="projectDetails"
+          [rows]="8"
+          [required]="true"
+          [minLength]="10"
+          [maxLength]="5000"
+          [errorMessages]="{
+            required: 'Please provide information about your project.',
+            minlength: 'Please provide at least 10 characters.',
+            maxlength: 'Your message cannot exceed 5,000 characters.',
+          }"
+        />
+
+        <div class="contact-form__footer">
+          <p>
+            By submitting this form, you agree that Nexera Group may contact you regarding your
+            enquiry.
+          </p>
+          <app-button type="submit" [loading]="submitting()" [disabled]="submitting()">
+            Send message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </app-button>
+        </div>
+      </form>
+    </div>
+
+    <aside class="contact-business" aria-labelledby="work-with-us-title">
+      <p class="contact-section__eyebrow">Work with us</p>
+      <h2 id="work-with-us-title">Start with a clear technical conversation.</h2>
+      <p class="contact-business__description">
+        You do not need every technical detail prepared. Share the business problem, the users you
+        want to support, and the result you want to achieve.
+      </p>
+
+      <div class="contact-business__details">
+        <div><span>Response time</span><strong>Within 1–2 business days</strong></div>
+        <div><span>Working location</span><strong>Kigali, Rwanda</strong></div>
+        <div><span>Project availability</span><strong>Rwanda and international</strong></div>
+      </div>
+
+      <div class="contact-business__social">
+        <span>Connect with us</span>
+        <a
+          href="https://wa.me/250788717923"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Nexera Group on WhatsApp"
+        >
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        </a>
+      </div>
+    </aside>
+  </section>
+
+  <section class="contact-section contact-process" aria-labelledby="contact-process-title">
+    <div class="contact-section__header">
+      <p class="contact-section__eyebrow">What happens next</p>
+      <h2 id="contact-process-title" class="contact-section__title">
+        A clear process from first conversation to project delivery.
+      </h2>
+      <p class="contact-section__subtitle">
+        We begin by understanding what you need before recommending technologies, estimating cost,
+        or defining a delivery plan.
+      </p>
+    </div>
+
+    <div class="contact-process__grid">
+      @for (step of steps; track step.number) {
+        <article class="contact-process__step">
+          <span>{{ step.number }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="contact-section contact-cta" aria-labelledby="contact-cta-title">
+    <div class="contact-cta__content">
+      <p class="contact-section__eyebrow">Prefer a direct conversation?</p>
+      <h2 id="contact-cta-title">Contact us directly through WhatsApp.</h2>
+      <p>Start a quick conversation with our team and tell us what you are planning to build.</p>
+      <a
+        class="contact-button contact-button--primary"
+        href="https://wa.me/250788717923"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Chat on WhatsApp</a
+      >
+    </div>
+  </section>
+</main>

@@ -1,0 +1,165 @@
+[data-color-theme="green"][data-theme="light"] {
+  --alert-primary: var(--green-700);
+  --alert-success: var(--green-700);
+  --alert-warning: var(--yellow-800);
+  --alert-danger: var(--red-700);
+  --alert-info: var(--blue-700);
+  --alert-on-solid: #ffffff;
+  color-scheme: light;
+
+  /* ==========================================================================
+     Application
+     ========================================================================== */
+
+  --background: var(--neutral-50);
+  --background-subtle: var(--green-50);
+
+  --surface: #ffffff;
+  --surface-secondary: var(--neutral-50);
+  --surface-tertiary: var(--green-50);
+
+  --surface-hover: var(--green-50);
+  --surface-active: var(--green-100);
+  --surface-selected: var(--green-100);
+
+  /* ==========================================================================
+     Primary
+     ========================================================================== */
+
+  --primary: var(--green-600);
+  --primary-hover: var(--green-700);
+  --primary-active: var(--green-800);
+
+  --primary-light: var(--green-100);
+  --primary-subtle: var(--green-50);
+
+  --primary-strong: var(--green-900);
+
+  --on-primary: #ffffff;
+
+  /* ==========================================================================
+     Text
+     ========================================================================== */
+
+  --text-primary: var(--neutral-900);
+  --text-secondary: var(--neutral-600);
+  --text-tertiary: var(--neutral-500);
+  --text-disabled: var(--neutral-400);
+
+  --text-brand: var(--green-700);
+  --text-link: var(--green-700);
+  --text-link-hover: var(--green-800);
+
+  --text-inverse: #ffffff;
+
+  /* ==========================================================================
+     Borders
+     ========================================================================== */
+
+  --border: var(--neutral-200);
+  --border-hover: var(--green-300);
+  --border-active: var(--green-500);
+  --border-strong: var(--neutral-300);
+
+  /* ==========================================================================
+     Inputs
+     ========================================================================== */
+
+  --input-background: #ffffff;
+  --input-border: var(--neutral-300);
+  --input-border-hover: var(--green-400);
+  --input-border-focus: var(--green-600);
+
+  /* ==========================================================================
+     Navigation
+     ========================================================================== */
+
+  --nav-background: #ffffff;
+  --nav-text: var(--neutral-600);
+
+  --nav-hover-background: var(--green-50);
+  --nav-hover-text: var(--green-700);
+
+  --nav-active-background: var(--green-100);
+  --nav-active-text: var(--green-700);
+
+  /* ==========================================================================
+     Sidebar
+     ========================================================================== */
+
+  --sidebar-background: #ffffff;
+  --sidebar-border: var(--neutral-200);
+
+  --sidebar-item-hover: var(--green-50);
+  --sidebar-item-active: var(--green-100);
+  --sidebar-item-active-text: var(--green-700);
+
+  /* ==========================================================================
+     Buttons
+     ========================================================================== */
+
+  --button-primary-background: var(--green-600);
+  --button-primary-hover: var(--green-700);
+  --button-primary-active: var(--green-800);
+  --button-primary-text: #ffffff;
+
+  --button-secondary-background: var(--green-50);
+  --button-secondary-hover: var(--green-100);
+  --button-secondary-text: var(--green-700);
+
+  /* ==========================================================================
+     Tables
+     ========================================================================== */
+
+  --table-header-background: var(--green-50);
+  --table-row-hover: var(--green-50);
+  --table-row-selected: var(--green-100);
+
+  /* ==========================================================================
+     Focus
+     ========================================================================== */
+
+  --focus-ring: rgb(7 148 85 / 30%);
+
+  --selection-background: var(--green-600);
+  --selection-text: #ffffff;
+
+  /* ==========================================================================
+     Overlay
+     ========================================================================== */
+
+  --overlay-background: rgb(16 24 40 / 50%);
+
+  --button-danger-background:
+    var(--red-600);
+
+  --button-danger-hover:
+    var(--red-700);
+
+  --button-danger-active:
+    var(--red-800);
+
+  --button-danger-text:
+    #ffffff;
+
+  --button-danger-background:
+    var(--red-500);
+
+  --button-danger-hover:
+    var(--red-400);
+
+  --button-danger-active:
+    var(--red-300);
+
+  --button-danger-text:
+    var(--red-950);
+
+  --badge-primary-background:
+    var(--green-50);
+
+  --badge-primary-border:
+    var(--green-200);
+
+  --badge-primary-text:
+    var(--green-700);
+}

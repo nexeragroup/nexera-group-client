@@ -2,6 +2,10 @@
 
 # Compiled output
 /dist
+/src/**/*.js
+/\.env.dev
+/\.env.staging
+/\.env.prod
 /tmp
 /out-tsc
 /bazel-out

@@ -1,0 +1,198 @@
+[data-color-theme="blue"][data-theme="light"] {
+  --alert-primary: var(--blue-700);
+  --alert-success: var(--green-700);
+  --alert-warning: var(--yellow-800);
+  --alert-danger: var(--red-700);
+  --alert-info: var(--blue-700);
+  --alert-on-solid: #ffffff;
+  color-scheme: light;
+
+  /* ==========================================================================
+     Application
+     ========================================================================== */
+
+  --background: var(--neutral-50);
+  --background-subtle: var(--blue-50);
+
+  --surface: #ffffff;
+  --surface-secondary: var(--neutral-50);
+  --surface-tertiary: var(--blue-50);
+
+  --surface-hover: var(--blue-50);
+  --surface-active: var(--blue-100);
+  --surface-selected: var(--blue-100);
+
+  /* ==========================================================================
+     Primary
+     ========================================================================== */
+
+  --primary: var(--blue-600);
+  --primary-hover: var(--blue-700);
+  --primary-active: var(--blue-800);
+
+  --primary-light: var(--blue-100);
+  --primary-subtle: var(--blue-50);
+
+  --primary-strong: var(--blue-900);
+
+  --on-primary: #ffffff;
+
+  /* ==========================================================================
+     Text
+     ========================================================================== */
+
+  --text-primary: var(--neutral-900);
+  --text-secondary: var(--neutral-600);
+  --text-tertiary: var(--neutral-500);
+  --text-disabled: var(--neutral-400);
+
+  --text-brand: var(--blue-700);
+  --text-link: var(--blue-700);
+  --text-link-hover: var(--blue-800);
+
+  --text-inverse: #ffffff;
+
+  /* ==========================================================================
+     Borders
+     ========================================================================== */
+
+  --border: var(--neutral-200);
+  --border-hover: var(--blue-300);
+  --border-active: var(--blue-500);
+  --border-strong: var(--neutral-300);
+
+  /* ==========================================================================
+     Inputs
+     ========================================================================== */
+
+  --input-background: #ffffff;
+  --input-border: var(--neutral-300);
+  --input-border-hover: var(--blue-400);
+  --input-border-focus: var(--blue-600);
+
+  /* ==========================================================================
+     Navigation
+     ========================================================================== */
+
+  --nav-background: #ffffff;
+  --nav-text: var(--neutral-600);
+
+  --nav-hover-background: var(--blue-50);
+  --nav-hover-text: var(--blue-700);
+
+  --nav-active-background: var(--blue-100);
+  --nav-active-text: var(--blue-700);
+
+  /* ==========================================================================
+     Sidebar
+     ========================================================================== */
+
+  --sidebar-background: #ffffff;
+  --sidebar-border: var(--neutral-200);
+
+  --sidebar-item-hover: var(--blue-50);
+  --sidebar-item-active: var(--blue-100);
+  --sidebar-item-active-text: var(--blue-700);
+
+  /* ==========================================================================
+     Buttons
+     ========================================================================== */
+
+  --button-primary-background: var(--blue-600);
+  --button-primary-hover: var(--blue-700);
+  --button-primary-active: var(--blue-800);
+  --button-primary-text: #ffffff;
+
+  --button-secondary-background: var(--blue-50);
+  --button-secondary-hover: var(--blue-100);
+  --button-secondary-text: var(--blue-700);
+
+  /* ==========================================================================
+     Tables
+     ========================================================================== */
+
+  --table-header-background: var(--blue-50);
+  --table-row-hover: var(--blue-50);
+  --table-row-selected: var(--blue-100);
+
+  /* ==========================================================================
+     Focus / selection
+     ========================================================================== */
+
+  --focus-ring: rgb(21 112 239 / 30%);
+
+  --selection-background: var(--blue-600);
+  --selection-text: #ffffff;
+
+  /* ==========================================================================
+     Overlay
+     ========================================================================== */
+
+  --overlay-background: rgb(16 24 40 / 50%);
+
+  --button-danger-background:
+    var(--red-600);
+
+  --button-danger-hover:
+    var(--red-700);
+
+  --button-danger-active:
+    var(--red-800);
+
+  --button-danger-text:
+    #ffffff;
+
+  --badge-neutral-background:
+    var(--neutral-100);
+
+  --badge-neutral-border:
+    var(--neutral-200);
+
+  --badge-neutral-text:
+    var(--neutral-700);
+
+  --badge-primary-background:
+    var(--blue-50);
+
+  --badge-primary-border:
+    var(--blue-200);
+
+  --badge-primary-text:
+    var(--blue-700);
+
+  --badge-success-background:
+    var(--green-50);
+
+  --badge-success-border:
+    var(--green-200);
+
+  --badge-success-text:
+    var(--green-700);
+
+  --badge-warning-background:
+    var(--yellow-50);
+
+  --badge-warning-border:
+    var(--yellow-200);
+
+  --badge-warning-text:
+    var(--yellow-700);
+
+  --badge-danger-background:
+    var(--red-50);
+
+  --badge-danger-border:
+    var(--red-200);
+
+  --badge-danger-text:
+    var(--red-700);
+
+  --badge-info-background:
+    var(--blue-50);
+
+  --badge-info-border:
+    var(--blue-200);
+
+  --badge-info-text:
+    var(--blue-700);
+}

@@ -1,0 +1,53 @@
+{
+  "id": "/",
+  "name": "Nexera Group",
+  "short_name": "Nexera",
+  "description": "Nexera Group builds reliable, scalable, and secure digital products for ambitious teams.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "categories": ["business", "productivity", "technology"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "url": "/services"
+    },
+    {
+      "name": "Our Portfolio",
+      "short_name": "Portfolio",
+      "url": "/portfolio"
+    },
+    {
+      "name": "Contact Nexera Group",
+      "short_name": "Contact",
+      "url": "/contact"
+    }
+  ]
+}

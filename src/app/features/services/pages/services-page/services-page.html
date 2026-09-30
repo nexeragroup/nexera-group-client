@@ -1,0 +1,91 @@
+<main class="services-page">
+  <section class="services-hero" aria-labelledby="services-title">
+    <div class="services-hero__background" aria-hidden="true"></div>
+    <div class="services-hero__content">
+      <p class="services-section__eyebrow">Nexera Group Services</p>
+      <h1 id="services-title" class="services-hero__title">{{ hero.title }}</h1>
+      <p class="services-hero__subtitle">{{ hero.subtitle }}</p>
+      <div class="services-hero__actions">
+        <a class="services-button services-button--primary" [routerLink]="hero.ctaPrimaryLink">{{ hero.ctaPrimary }}</a>
+        <a class="services-button services-button--secondary" [routerLink]="hero.ctaSecondaryLink">{{ hero.ctaSecondary }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section services-highlights" aria-label="Nexera Group service principles">
+    @for (highlight of highlights; track highlight.value) {
+      <article class="services-highlight"><strong>{{ highlight.value }}</strong><span>{{ highlight.label }}</span></article>
+    }
+  </section>
+
+  <section class="services-section services-intro" aria-labelledby="services-intro-title">
+    <div class="services-section__header">
+      <p class="services-section__eyebrow">What We Do</p>
+      <h2 id="services-intro-title" class="services-section__title">We help companies build software that is reliable, secure, and ready for growth.</h2>
+      <p class="services-section__subtitle">Whether you need a new product, a better internal system, an AI-powered tool, DevOps automation, or long-term technical support, we provide the engineering expertise needed to move from idea to production.</p>
+    </div>
+  </section>
+
+  <section id="service-list" class="services-section services-list" aria-label="Services">
+    @for (service of services; track service.id) {
+      <article [id]="service.id" class="service-block">
+        <div class="service-block__header">
+          <div class="service-block__icon"><i [class]="service.icon" aria-hidden="true"></i></div>
+          <div>
+            <p class="service-block__label">{{ service.label }}</p>
+            <h2>{{ service.title }}</h2>
+            <p>{{ service.description }}</p>
+          </div>
+        </div>
+        <div class="service-block__cards">
+          @for (card of service.cards; track card.title; let index = $index) {
+            <article class="service-card">
+              <span class="service-card__number">{{ index + 1 < 10 ? '0' + (index + 1) : index + 1 }}</span>
+              <h3>{{ card.title }}</h3>
+              <p>{{ card.description }}</p>
+            </article>
+          }
+        </div>
+      </article>
+    }
+  </section>
+
+  <section class="services-section services-process" aria-labelledby="process-title">
+    <div class="services-section__header">
+      <p class="services-section__eyebrow">Our Process</p>
+      <h2 id="process-title" class="services-section__title">A clear path from idea to production.</h2>
+      <p class="services-section__subtitle">We follow a practical engineering process that keeps your project clear, measurable, and ready for real users.</p>
+    </div>
+    <div class="services-process__grid">
+      @for (step of process; track step.step) {
+        <article class="services-process__step"><span>{{ step.step }}</span><h3>{{ step.title }}</h3><p>{{ step.description }}</p></article>
+      }
+    </div>
+  </section>
+
+  <section class="services-section services-engagement" aria-labelledby="engagement-title">
+    <div class="services-section__header">
+      <p class="services-section__eyebrow">Engagement Models</p>
+      <h2 id="engagement-title" class="services-section__title">Flexible ways to work with us.</h2>
+      <p class="services-section__subtitle">Choose the model that fits your current stage, budget, and technical needs.</p>
+    </div>
+    <div class="services-engagement__grid">
+      @for (model of engagementModels; track model.title) {
+        <article class="services-engagement__card">
+          <h3>{{ model.title }}</h3>
+          <p>{{ model.description }}</p>
+          <ul>@for (point of model.points; track point) { <li>{{ point }}</li> }</ul>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="services-section services-cta" aria-labelledby="services-cta-title">
+    <div class="services-cta__content">
+      <p class="services-section__eyebrow">Ready to Build?</p>
+      <h2 id="services-cta-title">Ready to build or improve your software?</h2>
+      <p>Let’s discuss your project, identify the best technical path, and turn your idea into a reliable production system.</p>
+      <a class="services-button services-button--primary" routerLink="/contact">Talk to an Engineer</a>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,168 @@
+<main class="portfolio-page">
+  <section class="portfolio-hero" aria-labelledby="portfolio-title">
+    <div class="portfolio-hero__background" aria-hidden="true"></div>
+
+    <div class="portfolio-hero__content">
+      <p class="portfolio-section__eyebrow">{{ hero.eyebrow }}</p>
+      <h1 id="portfolio-title" class="portfolio-hero__title">{{ hero.title }}</h1>
+      <p class="portfolio-hero__subtitle">{{ hero.subtitle }}</p>
+
+      <div class="portfolio-hero__actions">
+        <a class="portfolio-button portfolio-button--primary" [routerLink]="hero.primaryLink">
+          {{ hero.primaryCta }}
+        </a>
+        <a class="portfolio-button portfolio-button--secondary" [routerLink]="hero.secondaryLink">
+          {{ hero.secondaryCta }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-section portfolio-stats" aria-label="Portfolio statistics">
+    @for (stat of stats(); track stat.label) {
+      <article class="portfolio-stat">
+        <strong>{{ stat.value }}</strong>
+        <span>{{ stat.label }}</span>
+      </article>
+    }
+  </section>
+
+  <section class="portfolio-section portfolio-intro" aria-labelledby="selected-work-title">
+    <div class="portfolio-section__header">
+      <p class="portfolio-section__eyebrow">Selected Work</p>
+      <h2 id="selected-work-title" class="portfolio-section__title">
+        Products designed to solve practical problems and support growth.
+      </h2>
+      <p class="portfolio-section__subtitle">
+        Our work covers business platforms, hospitality, media, public information systems, and
+        artificial intelligence. Each project combines clear design with reliable engineering.
+      </p>
+    </div>
+
+    <div class="portfolio-filters" aria-label="Filter portfolio projects">
+      @for (category of categories(); track category) {
+        <button
+          type="button"
+          class="portfolio-filter"
+          [class.portfolio-filter--active]="selectedCategory() === category"
+          [attr.aria-pressed]="selectedCategory() === category"
+          (click)="selectCategory(category)"
+        >
+          {{ category }}
+        </button>
+      }
+    </div>
+  </section>
+
+  <section class="portfolio-section portfolio-projects" aria-label="Portfolio projects">
+    @if (loading()) {
+      <p role="status" class="portfolio-projects__empty">Loading projects…</p>
+    } @else if (error()) {
+      <div role="alert" class="portfolio-projects__empty">
+        <p>We couldn’t load the projects. Please try again.</p>
+        <button
+          type="button"
+          class="portfolio-button portfolio-button--primary"
+          (click)="loadProjects()"
+        >
+          Try again
+        </button>
+      </div>
+    } @else {
+      <div class="portfolio-projects__grid" [attr.aria-busy]="loading()">
+        @for (project of filteredProjects(); track project.id) {
+          <article class="portfolio-project" [class.portfolio-project--featured]="project.featured">
+            <div class="portfolio-project__preview" aria-hidden="true">
+              <div class="portfolio-project__preview-header">
+                <span>{{ project.number }}</span>
+                <span class="portfolio-project__category">{{ project.category }}</span>
+              </div>
+              <div class="portfolio-project__symbol">{{ project.code }}</div>
+              <div class="portfolio-project__preview-lines">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <div class="portfolio-project__content">
+              <div class="portfolio-project__heading">
+                <div>
+                  <p>{{ project.category }}</p>
+                  <h2>{{ project.name }}</h2>
+                </div>
+                @if (project.featured) {
+                  <span class="portfolio-project__featured">Featured</span>
+                }
+              </div>
+
+              <h3>{{ project.headline }}</h3>
+              <p class="portfolio-project__description">{{ project.description }}</p>
+
+              @if (project.technologies.length) {
+                <ul class="portfolio-project__technologies" aria-label="Project technologies">
+                  @for (technology of project.technologies; track technology) {
+                    <li>{{ technology }}</li>
+                  }
+                </ul>
+              }
+
+              @if (project.link) {
+                <a
+                  class="portfolio-project__link"
+                  [href]="project.link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>{{ project.linkLabel || 'Visit ' + project.name }}</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                </a>
+              }
+            </div>
+          </article>
+        }
+      </div>
+
+      @if (filteredProjects().length === 0) {
+        <p class="portfolio-projects__empty">No projects are available in this category yet.</p>
+      }
+    }
+  </section>
+
+  <section class="portfolio-section portfolio-delivery" aria-labelledby="delivery-title">
+    <div class="portfolio-section__header">
+      <p class="portfolio-section__eyebrow">Behind Every Project</p>
+      <h2 id="delivery-title" class="portfolio-section__title">
+        The same engineering standards across every product.
+      </h2>
+      <p class="portfolio-section__subtitle">
+        Different products require different technologies, but our focus on clarity, reliability,
+        security, and long-term value remains consistent.
+      </p>
+    </div>
+
+    <div class="portfolio-delivery__grid">
+      @for (principle of principles; track principle.number) {
+        <article class="portfolio-delivery__card">
+          <span>{{ principle.number }}</span>
+          <h3>{{ principle.title }}</h3>
+          <p>{{ principle.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="portfolio-section portfolio-cta" aria-labelledby="portfolio-cta-title">
+    <div class="portfolio-cta__content">
+      <p class="portfolio-section__eyebrow">Your Project Could Be Next</p>
+      <h2 id="portfolio-cta-title">
+        Have a product, business platform, or AI idea you want to build?
+      </h2>
+      <p>
+        Talk to our engineering team and let us define the right architecture, technology, and
+        delivery path for your project.
+      </p>
+      <a routerLink="/contact" class="portfolio-button portfolio-button--primary"
+        >Start Your Project</a
+      >
+    </div>
+  </section>
+</main>

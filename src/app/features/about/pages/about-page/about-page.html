@@ -1,0 +1,121 @@
+<main class="about-page">
+  <section class="about-hero" aria-labelledby="about-title">
+    <div class="about-hero__background" aria-hidden="true"></div>
+    <div class="about-hero__content">
+      <p class="about-section__eyebrow">{{ hero.eyebrow }}</p>
+      <h1 id="about-title" class="about-hero__title">{{ hero.title }}</h1>
+      <p class="about-hero__subtitle">{{ hero.subtitle }}</p>
+      <div class="about-hero__actions">
+        <a class="about-button about-button--primary" [routerLink]="hero.primaryLink">{{ hero.primaryCta }}</a>
+        <a class="about-button about-button--secondary" [routerLink]="hero.secondaryLink">{{ hero.secondaryCta }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section about-stats" aria-label="Nexera Group principles">
+    @for (stat of stats; track stat.value) {
+      <article class="about-stat">
+        <strong>{{ stat.value }}</strong>
+        <span>{{ stat.label }}</span>
+      </article>
+    }
+  </section>
+
+  <section class="about-section about-story" aria-labelledby="story-title">
+    <div class="about-section__header">
+      <p class="about-section__eyebrow">Who We Are</p>
+      <h2 id="story-title" class="about-section__title">A technical partner for teams that want to build serious software.</h2>
+    </div>
+    <div class="about-story__grid">
+      <div class="about-story__content">
+        <p>Nexera Group exists to help organizations build software that solves real problems, supports real operations, and creates long-term business value.</p>
+        <p>We work with founders, business leaders, and technical teams to turn ideas into reliable digital products. Our approach combines product thinking, software architecture, DevOps, security, and practical engineering execution.</p>
+        <p>We believe good software should be clear, secure, scalable, and easy to maintain. That is why we focus on strong foundations, clean implementation, and long-term support instead of short-term shortcuts.</p>
+      </div>
+      <aside class="about-story__panel">
+        <span>Our Mission</span>
+        <h3>Build technology that helps businesses operate better and grow faster.</h3>
+        <p>We aim to become a trusted engineering partner for companies that need dependable digital systems, not just code delivery.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="about-section about-values" aria-labelledby="values-title">
+    <div class="about-section__header">
+      <p class="about-section__eyebrow">What We Believe</p>
+      <h2 id="values-title" class="about-section__title">Our values guide how we design, build, and support software.</h2>
+      <p class="about-section__subtitle">Every project is handled with a focus on quality, trust, clarity, and long-term reliability.</p>
+    </div>
+    <div class="about-card-grid">
+      @for (value of values; track value.title) {
+        <article class="about-card about-value-card">
+          <div class="about-card__icon"><i [class]="value.icon" aria-hidden="true"></i></div>
+          <h3>{{ value.title }}</h3>
+          <p>{{ value.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="about-section about-timeline" aria-labelledby="timeline-title">
+    <div class="about-section__header">
+      <p class="about-section__eyebrow">How We Think</p>
+      <h2 id="timeline-title" class="about-section__title">We follow a practical path from discovery to continuous improvement.</h2>
+    </div>
+    <div class="about-timeline__grid">
+      @for (item of timeline; track item.step) {
+        <article class="about-timeline__item">
+          <span>{{ item.step }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="about-section about-principles" aria-labelledby="principles-title">
+    <div class="about-principles__intro">
+      <p class="about-section__eyebrow">Engineering Principles</p>
+      <h2 id="principles-title" class="about-section__title">We build systems that teams can trust and maintain.</h2>
+      <p>Our engineering mindset is simple: understand the business, design the right foundation, build clearly, deploy safely, and improve continuously.</p>
+    </div>
+    <div class="about-principles__list">
+      @for (principle of principles; track principle.title; let index = $index) {
+        <article class="about-principle">
+          <span>{{ (index + 1).toString().padStart(2, '0') }}</span>
+          <div>
+            <h3>{{ principle.title }}</h3>
+            <p>{{ principle.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="about-section about-capabilities" aria-labelledby="capabilities-title">
+    <div class="about-section__header">
+      <p class="about-section__eyebrow">Our Capabilities</p>
+      <h2 id="capabilities-title" class="about-section__title">From product idea to production infrastructure.</h2>
+      <p class="about-section__subtitle">We bring together software development, architecture, deployment, and long-term support to help your product succeed.</p>
+    </div>
+    <div class="about-capabilities__grid">
+      @for (capability of capabilities; track capability.title) {
+        <article class="about-capability">
+          <h3>{{ capability.title }}</h3>
+          <ul>
+            @for (point of capability.points; track point) { <li>{{ point }}</li> }
+          </ul>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="about-section about-cta" aria-labelledby="about-cta-title">
+    <div class="about-cta__content">
+      <p class="about-section__eyebrow">Let’s Work Together</p>
+      <h2 id="about-cta-title">Have an idea, system, or product you want to build better?</h2>
+      <p>Let’s discuss your goals and define the right technical path for your next software project.</p>
+      <a routerLink="/contact" class="about-button about-button--primary">Talk to an Engineer</a>
+    </div>
+  </section>
+</main>

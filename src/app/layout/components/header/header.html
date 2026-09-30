@@ -1,0 +1,45 @@
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a routerLink="/" class="nav__brand" aria-label="Nexera Group home" (click)="closeMenu()">
+      <span class="nav__logo-text">Nexera Group</span>
+    </a>
+
+    <ul id="main-navigation" class="nav__list" [class.nav__list--open]="menuOpen()">
+      @for (route of routes; track route.route) {
+        <li class="nav__item">
+          <a
+            class="nav__link"
+            [routerLink]="route.route"
+            routerLinkActive="nav__link--active"
+            [routerLinkActiveOptions]="{ exact: route.exact ?? false }"
+            (click)="closeMenu()"
+          >
+            {{ route.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="nav__actions">
+      <button
+        type="button"
+        class="nav__icon-button"
+        [attr.aria-label]="dark() ? 'Use light theme' : 'Use dark theme'"
+        (click)="toggleTheme()"
+      >
+        <i [class]="dark() ? 'fa-solid fa-sun' : 'fa-solid fa-moon'" aria-hidden="true"></i>
+      </button>
+
+      <button
+        type="button"
+        class="nav__icon-button nav__menu-button"
+        aria-controls="main-navigation"
+        [attr.aria-label]="menuOpen() ? 'Close navigation menu' : 'Open navigation menu'"
+        [attr.aria-expanded]="menuOpen()"
+        (click)="toggleMenu()"
+      >
+        <i [class]="menuOpen() ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'" aria-hidden="true"></i>
+      </button>
+    </div>
+  </nav>
+</header>

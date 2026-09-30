@@ -1,0 +1,173 @@
+<div class="home-page">
+  <section class="home-hero" aria-labelledby="home-hero-title">
+    <div class="home-hero__background" aria-hidden="true"></div>
+
+    <div class="home-hero__content">
+      <div class="home-hero__logo-wrap">
+        <img [src]="logoSource()" alt="Nexera Group" class="home-hero__logo" />
+      </div>
+      <p class="home-hero__eyebrow">Software Engineering • DevOps • System Architecture</p>
+      <h1 id="home-hero-title" class="home-hero__title">{{ activeHero().headline }}</h1>
+      <p class="home-hero__subtitle">{{ activeHero().subheadline }}</p>
+
+      <div class="home-hero__actions">
+        <a class="home-button home-button--primary" [routerLink]="activeHero().primaryCtaLink">
+          {{ activeHero().primaryCtaText }}
+        </a>
+        <a class="home-button home-button--secondary" [routerLink]="activeHero().secondaryCtaLink">
+          {{ activeHero().secondaryCtaText }}
+        </a>
+      </div>
+
+      <p class="home-hero__trust">Trusted by startups and enterprises • Production-ready software • No shortcuts</p>
+    </div>
+
+    <div class="home-hero__controls" aria-label="Hero slides">
+      <button type="button" class="home-hero__arrow" aria-label="Previous slide" (click)="previousSlide()">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+      </button>
+      <div class="home-hero__indicators">
+        @for (slide of heroes; track slide.headline; let index = $index) {
+          <button
+            type="button"
+            class="home-hero__indicator"
+            [class.home-hero__indicator--active]="index === slideIndex()"
+            [attr.aria-label]="'Show slide ' + (index + 1)"
+            [attr.aria-current]="index === slideIndex() ? 'true' : null"
+            (click)="selectSlide(index)"
+          ></button>
+        }
+      </div>
+      <button type="button" class="home-hero__arrow" aria-label="Next slide" (click)="nextSlide()">
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="home-section home-stats" aria-label="Nexera Group principles">
+    @for (stat of stats; track stat.value) {
+      <article class="home-stat">
+        <strong>{{ stat.value }}</strong>
+        <span>{{ stat.label }}</span>
+      </article>
+    }
+  </section>
+
+  <section class="home-section home-about" aria-labelledby="about-title">
+    <div class="home-section__header">
+      <p class="home-section__eyebrow">About Nexera Group</p>
+      <h2 id="about-title" class="home-section__title">We turn complex business needs into secure digital systems.</h2>
+    </div>
+    <div class="home-about__grid">
+      <div class="home-about__content">
+        <p>At Nexera Group, we design and deliver high-quality software solutions that are reliable, scalable, and secure from the ground up.</p>
+        <p>We work closely with startups, growing businesses, and established enterprises, acting as a strategic technology partner rather than only a service provider.</p>
+        <p>From product strategy and architecture to development, deployment, and long-term support, we help transform ideas into digital products that create measurable business value.</p>
+      </div>
+      <aside class="home-about__panel">
+        <span>Our promise</span>
+        <h3>Build it right from the beginning.</h3>
+        <p>Clean architecture, strong security, practical UX, and maintainable code are not extras. They are part of how we work.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="home-section home-services" aria-labelledby="services-title">
+    <div class="home-section__header">
+      <p class="home-section__eyebrow">Our Services</p>
+      <h2 id="services-title" class="home-section__title">Engineering services for modern companies.</h2>
+      <p class="home-section__subtitle">We help teams build, modernize, deploy, and maintain software systems with confidence.</p>
+    </div>
+    <div class="home-card-grid">
+      @for (service of services; track service.title) {
+        <article class="home-card home-service-card">
+          <div class="home-card__icon"><i [class]="service.icon" aria-hidden="true"></i></div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <a [routerLink]="service.route" [fragment]="service.fragment" class="home-card__link">
+            Learn more <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="home-section home-audiences" aria-labelledby="audiences-title">
+    <div class="home-section__header">
+      <p class="home-section__eyebrow">Who We Help</p>
+      <h2 id="audiences-title" class="home-section__title">Built for different stages of business growth.</h2>
+    </div>
+    <div class="home-card-grid home-card-grid--three">
+      @for (audience of audiences; track audience.title) {
+        <article class="home-card home-audience-card">
+          <h3>{{ audience.title }}</h3>
+          <p>{{ audience.description }}</p>
+          <ul>
+            @for (point of audience.points; track point) {
+              <li>{{ point }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="home-section home-process" aria-labelledby="process-title">
+    <div class="home-section__header">
+      <p class="home-section__eyebrow">How We Work</p>
+      <h2 id="process-title" class="home-section__title">A clear process from idea to production.</h2>
+    </div>
+    <div class="home-process__grid">
+      @for (step of process; track step.step) {
+        <article class="home-process__step">
+          <span>{{ step.step }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="home-section home-technologies" aria-labelledby="technologies-title">
+    <div class="home-section__header">
+      <p class="home-section__eyebrow">Technology Stack</p>
+      <h2 id="technologies-title" class="home-section__title">Proven technologies for scalable products.</h2>
+      <p class="home-section__subtitle">We choose practical, maintainable tools that fit your product and team.</p>
+    </div>
+    <div class="home-tech-grid">
+      @for (technology of technologies; track technology.category) {
+        <article class="home-tech-card">
+          <h3>{{ technology.category }}</h3>
+          <div class="home-tech-card__items">
+            @for (item of technology.items; track item.name) {
+              <div class="home-tech-item">
+                <img [src]="item.icon" [alt]="item.name" />
+                <span>{{ item.name }}</span>
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="home-section home-compliance" aria-labelledby="compliance-title">
+    <div class="home-compliance__content">
+      <p class="home-section__eyebrow">Compliance & Trust</p>
+      <h2 id="compliance-title" class="home-section__title">We build with security, privacy, and reliability in mind.</h2>
+      <p>Our systems are designed with strong engineering practices, secure data handling, and Rwanda’s data protection expectations in mind.</p>
+    </div>
+    <div class="home-compliance__badge">
+      <img src="/images/dpo.png" alt="Data protection compliance" />
+    </div>
+  </section>
+
+  <section class="home-section home-cta" aria-labelledby="cta-title">
+    <div class="home-cta__content">
+      <p class="home-section__eyebrow">Start Your Project</p>
+      <h2 id="cta-title">Let’s build your next product.</h2>
+      <p>Talk to our engineers and get a clear path from idea to production.</p>
+      <a routerLink="/contact" class="home-button home-button--primary">Contact Us</a>
+    </div>
+  </section>
+</div>

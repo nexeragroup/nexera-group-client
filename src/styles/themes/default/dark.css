@@ -1,0 +1,134 @@
+[data-color-theme="default"][data-theme="dark"] {
+  color-scheme: dark;
+
+  --black: #000;
+  --white: #fff;
+
+  --background: #0a0a0a;
+  --background-subtle: #0a0a0a;
+  --surface: #323232;
+  --surface-secondary: #323232;
+  --surface-tertiary: #323232;
+  --surface-hover: #323232;
+  --surface-active: #323232;
+  --surface-selected: #323232;
+
+  --primary: var(--white);
+  --primary-hover: var(--white);
+  --primary-active: var(--white);
+  --primary-light: var(--black);
+  --primary-subtle: var(--black);
+  --primary-strong: var(--white);
+  --on-primary: var(--black);
+
+  --text-primary: var(--white);
+  --text-secondary: #c8c8c8;
+  --text-tertiary: #c8c8c8;
+  --text-disabled: #c8c8c8;
+  --text-brand: var(--white);
+  --text-link: var(--white);
+  --text-link-hover: var(--white);
+  --text-inverse: var(--black);
+
+  --border: rgb(255 255 255 / 5%);
+  --border-hover: rgb(255 255 255 / 5%);
+  --border-active: var(--white);
+  --border-strong: var(--white);
+
+  --input-background: var(--black);
+  --input-border: var(--white);
+  --input-border-hover: var(--white);
+  --input-border-focus: var(--white);
+
+  --nav-background: var(--black);
+  --nav-text: var(--white);
+  --nav-hover-background: var(--white);
+  --nav-hover-text: var(--black);
+  --nav-active-background: var(--white);
+  --nav-active-text: var(--black);
+
+  --sidebar-background: #0a0a0a;
+  --sidebar-border: rgb(255 255 255 / 5%);
+  --sidebar-item-hover: var(--white);
+  --sidebar-item-active: var(--white);
+  --sidebar-item-active-text: var(--black);
+
+  --button-primary-background: var(--white);
+  --button-primary-hover: var(--white);
+  --button-primary-active: var(--white);
+  --button-primary-text: var(--black);
+  --button-secondary-background: var(--black);
+  --button-secondary-hover: var(--black);
+  --button-secondary-text: var(--white);
+  --button-on-solid: var(--black);
+
+  --table-header-background: var(--black);
+  --table-row-hover: var(--black);
+  --table-row-selected: var(--black);
+  --focus-ring: var(--white);
+  --selection-background: var(--white);
+  --selection-text: var(--black);
+  --overlay-background: rgb(0 0 0 / 72%);
+
+  --alert-primary: var(--white);
+  --alert-success: var(--white);
+  --alert-warning: var(--white);
+  --alert-danger: var(--white);
+  --alert-info: var(--white);
+  --alert-on-solid: var(--black);
+
+  --badge-neutral-background: var(--black);
+  --badge-neutral-border: var(--white);
+  --badge-neutral-text: var(--white);
+  --badge-primary-background: var(--black);
+  --badge-primary-border: var(--white);
+  --badge-primary-text: var(--white);
+  --badge-success-background: var(--black);
+  --badge-success-border: var(--white);
+  --badge-success-text: var(--white);
+  --badge-warning-background: var(--black);
+  --badge-warning-border: var(--white);
+  --badge-warning-text: var(--white);
+  --badge-danger-background: var(--black);
+  --badge-danger-border: var(--white);
+  --badge-danger-text: var(--white);
+  --badge-info-background: var(--black);
+  --badge-info-border: var(--white);
+  --badge-info-text: var(--white);
+
+  --slate-50: var(--black);
+  --slate-100: var(--black);
+  --slate-200: var(--white);
+  --slate-700: var(--white);
+  --slate-800: var(--white);
+  --slate-900: var(--white);
+
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+}
+
+[data-color-theme="default"][data-theme="dark"] .button {
+  --button-base: var(--white) !important;
+  --button-hover: var(--white) !important;
+  --button-active: var(--white) !important;
+  --button-subtle: var(--black) !important;
+  --button-light: var(--black) !important;
+  --button-on-color: var(--black) !important;
+}
+
+[data-color-theme="default"][data-theme="dark"] .badge {
+  --badge-base: var(--white) !important;
+  --badge-subtle: var(--black) !important;
+  --badge-light: var(--black) !important;
+  --badge-on-color: var(--black) !important;
+}
+
+[data-color-theme="default"][data-theme="dark"] .alert {
+  --alert-tone: var(--white) !important;
+  --alert-subtle: var(--black) !important;
+  --alert-light: var(--black) !important;
+  --alert-on-solid: var(--black) !important;
+}

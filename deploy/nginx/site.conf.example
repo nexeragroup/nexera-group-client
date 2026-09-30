@@ -1,0 +1,59 @@
+# Template only: install within nginx's http context after replacing domains,
+# certificate paths, upstream address, and artifact root. Not auto-deployed.
+upstream angular_api {
+    # Private backend on this host. In Docker use the backend service DNS name.
+    server 127.0.0.1:3000;
+    keepalive 32;
+}
+
+server {
+    listen 80;
+    server_name example.com api.example.com;
+    return 308 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name example.com;
+    ssl_certificate /etc/nginx/tls/example.com/fullchain.pem;
+    ssl_certificate_key /etc/nginx/tls/example.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    server_tokens off;
+
+    include /etc/nginx/snippets/angular-api-locations.conf;
+    root /srv/angular/browser;
+    index index.html;
+    location / {
+        try_files $uri $uri/ /index.html;
+        add_header Cache-Control "no-cache";
+    }
+    # For SSR, replace root/index/location above with:
+    # location / {
+    #     proxy_pass http://127.0.0.1:4200;
+    #     proxy_http_version 1.1;
+    #     proxy_set_header Connection "";
+    #     proxy_set_header Host $host;
+    #     proxy_set_header X-Forwarded-Host $host;
+    #     proxy_set_header X-Forwarded-Proto $scheme;
+    #     proxy_set_header X-Forwarded-Port $server_port;
+    #     proxy_set_header X-Forwarded-For $remote_addr;
+    #     proxy_set_header Forwarded "";
+    #     proxy_connect_timeout 5s;
+    #     proxy_read_timeout 30s;
+    #     proxy_cache off;
+    # }
+}
+
+# Optional direct API domain. Remove if only same-origin /api is used.
+server {
+    listen 443 ssl;
+    server_name api.example.com;
+    ssl_certificate /etc/nginx/tls/api.example.com/fullchain.pem;
+    ssl_certificate_key /etc/nginx/tls/api.example.com/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    server_tokens off;
+
+    include /etc/nginx/snippets/angular-api-locations.conf;
+    location / { return 404; }
+    # Configure CORS at the backend, with explicit allowed frontend origins.
+}
