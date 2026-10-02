@@ -36,7 +36,7 @@ jobs:
       - name: Prepare deployment folders
         run: |
           ssh -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" \
-            "install -d -m 0755 '$DEPLOY_ROOT/web' '$DEPLOY_ROOT/logs' '$DEPLOY_ROOT/data'"
+            "install -d -m 0755 '$DEPLOY_ROOT/web' '$DEPLOY_ROOT/logs' '$DEPLOY_ROOT/data' && (docker network inspect nexera-group-staging-network >/dev/null 2>&1 || docker network create nexera-group-staging-network)"
 
       - name: Synchronize web application
         run: |
@@ -54,3 +54,8 @@ jobs:
         run: |
           ssh -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" \
             "cd '$DEPLOY_ROOT/web' && docker compose --env-file deploy/.env.staging -f deploy/compose.staging.yml up -d --build --remove-orphans"
+
+      - name: Verify web health
+        run: |
+          ssh -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" \
+            "for attempt in \$(seq 1 12); do curl --fail --silent --show-error --resolve staging.nexeragroup.rw:443:127.0.0.1 https://staging.nexeragroup.rw/ && exit 0; sleep 5; done; docker logs --tail=100 nexera-group-web-staging; exit 1"

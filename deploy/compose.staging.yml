@@ -28,3 +28,4 @@ services:
 networks:
   nexera-group:
     name: ${WEB_NETWORK_NAME}
+    external: true
